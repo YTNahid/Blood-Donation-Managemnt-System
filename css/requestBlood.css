@@ -1,0 +1,118 @@
+#blood-requests-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.data {
+  grid-column: span 1;
+}
+
+.request .title {
+  color: var(--primary-color);
+}
+
+.request .meta {
+  color: #696969;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.location-link {
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.filter .input {
+  width: 100px;
+}
+
+.urgent-msg {
+  font-size: 14px;
+  color: red;
+  font-weight: 500;
+}
+
+.action {
+  margin-top: 15px;
+  align-items: center;
+  gap: 10px;
+
+  button[disabled] {
+    background-color: gray;
+    cursor: not-allowed;
+  }
+
+  .status {
+    border-radius: 100px;
+    padding: 3px 10px;
+    font-size: 10px;
+    font-weight: 500;
+    color: white;
+  }
+  .status.pending {
+    background: orange;
+  }
+  .status.approved {
+    background: green;
+  }
+  .status.rejected {
+    background: red;
+  }
+}
+
+/* Form */
+.info-container {
+  position: relative;
+  display: inline-block;
+}
+
+.info-container .info {
+  position: absolute;
+  font-size: 10px;
+  background: black;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  width: 400px;
+  top: -105px;
+  left: 0;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 10;
+}
+
+.info-container:hover .info {
+  visibility: visible;
+  opacity: 1;
+}
+
+.info-container a {
+  color: white;
+  text-decoration: underline;
+}
+
+.info-container i {
+  color: #a6a6a6;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1600px) {
+  .data {
+    grid-column: span 2;
+  }
+}
+
+@media only screen and (max-width: 1250px) {
+  .data {
+    grid-column: span 3;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .info-container .info {
+    width: 300px;
+    left: -220px;
+    top: -140px;
+  }
+}

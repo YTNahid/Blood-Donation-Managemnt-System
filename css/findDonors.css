@@ -1,0 +1,25 @@
+/* Filter */
+.filter .input {
+    width: 200px;
+}
+
+/* Donors */
+.section-donors {
+	margin-top: 30px;
+}
+
+.section-donors .column {
+	padding: 0;
+}
+
+.link {
+	text-align: center;
+	padding: 8px;
+	margin-top: -8px;
+	display: flex;
+	gap: 5px;
+}
+
+.contact .icon {
+	width: 20px;
+}

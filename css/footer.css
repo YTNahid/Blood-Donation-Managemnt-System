@@ -1,0 +1,37 @@
+footer {
+  margin-top: 2rem;
+  text-align: center;
+  padding: 5em 0;
+  box-shadow: 0rem -0.2rem 0.4rem rgba(65, 65, 65, 0.2);
+}
+
+.foot {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.foot-logo {
+  text-align: start;
+}
+.foot-logo p {
+  margin: 1rem 0;
+}
+
+ul.quick {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+ul.quick a {
+  text-decoration: none;
+  color: black;
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 426px) {
+  .foot {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}

@@ -1,0 +1,62 @@
+/* About Page Styles */
+
+.about {
+  margin: 10rem 0;
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  line-height: 1.7;
+}
+
+.about h1 {
+  font-size: 2rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--accent-color);
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+}
+
+.about p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+/* Optional Styling for Lists (if paragraphs have lists inside) */
+.about p::before {
+  content: "";
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .about {
+    padding: 0 1rem;
+  }
+
+  .about h1 {
+    font-size: 1.6rem;
+  }
+
+  .about p {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .about {
+    margin-top: 2rem;
+  }
+
+  .about h1 {
+    font-size: 1.4rem;
+  }
+
+  .about p {
+    font-size: 0.95rem;
+  }
+}

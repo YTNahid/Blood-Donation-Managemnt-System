@@ -1,0 +1,382 @@
+/* ----- Global Style ----- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Roots
+========================================================================== */
+:root {
+  --content-width: 100%;
+  --gap: 20px;
+  --column-padding: 10px;
+  --primary-color: rgb(120, 6, 6);
+  --heading-color: #131313;
+  --text-color: #131313;
+  --border-color: #dddddd;
+  --bg-color: #bfafa0;
+  --accent-color: rgba(120, 6, 6, 0.3);
+  --primary-font: 'Poppins', sans-serif;
+  --shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+/* Global CSS Style
+========================================================================== */
+* {
+  transition: all 0.2s;
+  font-family: var(--primary-font);
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: #f8f9fa;
+}
+
+/*
+* Sections and columns Structure ---------
+*/
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap);
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: var(--content-width);
+}
+
+.row-gap {
+  gap: var(--gap);
+}
+
+.row-full {
+  max-width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: var(--content-width);
+  gap: var(--gap);
+  padding: var(--column-padding);
+}
+
+.column-row {
+  flex-direction: row;
+}
+
+.section-gap {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.col-no-padding {
+  padding: 0;
+}
+
+.data {
+  position: relative;
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  border: 1px solid #ddd;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+/* Delete Data icon */
+.delete-data {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 22px;
+  cursor: pointer;
+  filter: brightness(0) saturate(100%) invert(14%) sepia(92%) saturate(7493%); /*  Make image red */
+}
+
+/*
+* Text Styles ---------
+*/
+.heading {
+  color: var(--heading-color);
+  line-height: 1.4em;
+  margin: 0;
+  font-weight: 700;
+}
+
+h1.heading {
+  font-size: 45px;
+}
+
+h2.heading {
+  font-size: 35px;
+}
+
+h3.heading {
+  font-size: 24px;
+  line-height: 1.5em;
+}
+
+h4.heading {
+  font-size: 20px;
+  line-height: 1.5em;
+}
+
+h5.heading {
+  font-size: 18px;
+  line-height: 1.5em;
+}
+
+h6.heading {
+  font-size: 16px;
+  line-height: 1.5em;
+}
+
+.text {
+  color: var(--text-color);
+  font-size: 16px;
+  line-height: 1.6em;
+  margin: 0;
+  line-height: 1.6em;
+}
+
+.text-gap {
+  margin-bottom: 15px;
+}
+
+img {
+  width: 100%;
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+}
+
+/* Buttons */
+.button {
+  padding: 13px 25px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.button:hover {
+  transform: translateY(3px);
+}
+
+.button.button-small {
+  padding: 8px 12px;
+  font-size: 10px;
+}
+.button-delete {
+  background: #dc3545;
+}
+
+/* Form */
+.required-star {
+  color: red;
+  margin-left: 2px;
+}
+
+.form {
+  max-width: 600px;
+  padding: 25px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.form-full {
+  max-width: 100%;
+}
+
+.form .full {
+  grid-column: span 12;
+}
+
+.form .half {
+  grid-column: span 6;
+}
+
+.form .third {
+  grid-column: span 4;
+}
+
+.form-group {
+  position: relative;
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--heading-color);
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 18px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fafafa;
+  color: var(--text-color);
+}
+
+.input[type='checkbox'] {
+  width: 100%;
+}
+
+.f-btn {
+  width: 100%;
+  padding: 13px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.f-btn:hover {
+  transform: translateY(3px);
+}
+
+/* Filter */
+.filter {
+  max-width: 100%;
+  padding: 25px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Responsive------------- */
+@media only screen and (max-width: 1024px) {
+  .section-gap {
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+  h1.heading {
+    font-size: 36px;
+  }
+  h2.heading {
+    font-size: 30px;
+  }
+  h3.heading {
+    font-size: 22px;
+  }
+  h4.heading {
+    font-size: 19px;
+  }
+  h5.heading {
+    font-size: 17px;
+  }
+  h6.heading {
+    font-size: 15px;
+  }
+  .text {
+    font-size: 15px;
+  }
+
+  /* Buttons */
+  .button {
+    font-size: 15px;
+  }
+
+  /* Form */
+  .input {
+    font-size: 13px;
+  }
+  .f-btn {
+    font-size: 13px;
+  }
+  .delete-data {
+    top: 10px;
+    right: 10px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .row:not(.exclude) {
+    flex-direction: column;
+  }
+  .section-gap {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  h1.heading {
+    font-size: 30px;
+  }
+  h2.heading {
+    font-size: 25px;
+  }
+  h3.heading {
+    font-size: 20px;
+  }
+  h4.heading {
+    font-size: 17px;
+  }
+  h5.heading {
+    font-size: 15px;
+  }
+  h6.heading {
+    font-size: 14px;
+  }
+  .text {
+    font-size: 14px;
+  }
+
+  /* Buttons */
+  .button {
+    font-size: 14px;
+    padding: 13px 18px;
+  }
+
+  /* Form */
+  .form .half,
+  .form .third {
+    grid-column: span 12;
+  }
+
+  .input {
+    font-size: 12px;
+  }
+  .f-btn {
+    font-size: 12px;
+  }
+}

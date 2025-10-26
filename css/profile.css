@@ -1,0 +1,46 @@
+.profile-details {
+  column-count: 3;
+}
+
+.main-profile {
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.profile-photo {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 1000px;
+  border: 1px solid var(--primary-color);
+}
+
+.img-container {
+  width: auto;
+  align-items: center;
+
+  button {
+    align-self: start;
+  }
+}
+
+.profile-details p {
+  margin-bottom: 10px;
+}
+
+.availability {
+  margin-top: 50px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .profile-details {
+    column-count: 2;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .profile-details {
+    column-count: 1;
+  }
+}

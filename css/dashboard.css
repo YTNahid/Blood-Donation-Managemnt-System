@@ -1,0 +1,54 @@
+/* Cards */
+.cards-container {
+	gap: 20px;
+}
+
+.card {
+	background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    padding: 2rem;
+    gap: 15px;
+}
+
+.card-number {
+	font-size: clamp(40px, calc((70 - 40) * ((100vw - 360px) / (1140 - 360)) + 40px), 70px);
+	font-weight: 600;
+	text-align: center;
+	line-height: 1em;
+}
+
+.card-title {
+	text-align: center;
+}
+
+.link {
+	text-align: center;
+	padding: 8px;
+	margin-top: -8px;
+	display: flex;
+	gap: 5px;
+}
+
+.card-link {
+	margin: auto;
+}
+
+.link:hover span {
+	margin-left: 8px;
+}
+
+/* Recent Donors */
+.section-recent {
+	margin-top: 30px;
+}
+
+.section-recent .column {
+	padding: 0;
+}
+
+.contact .icon {
+	width: 20px;
+}
+
+
