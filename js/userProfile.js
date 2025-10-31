@@ -77,6 +77,7 @@ const renderUserProfile = (user, sessionUserId) => {
         <h3 class="heading name">${user.username}</h3>
       </div>
       <div class="profile-details">
+        <p class="text"><strong>Role:</strong> ${user.role}</p>
         <p class="text"><strong>Email:</strong> ${user.email}</p>
         <p class="text"><strong>Phone:</strong> ${user.phone}</p>
         <p class="text"><strong>WhatsApp:</strong> ${user.whatsapp ? user.whatsapp : 'Not provided'}</p>
@@ -84,7 +85,6 @@ const renderUserProfile = (user, sessionUserId) => {
         <p class="text"><strong>Blood Group:</strong> ${user.blood_group}</p>
         <p class="text"><strong>Birth Date:</strong> ${formatDate(user.birth_date, false)}</p>
         <p class="text"><strong>District:</strong> ${user.district}</p>
-        <p class="text"><strong>Role:</strong> ${user.role}</p>
       </div>
       <div class="availability">
         <p class="text"><strong>Available for Donation: 
