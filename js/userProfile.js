@@ -153,6 +153,11 @@ async function fetchAndApplyUserPhoto(userId) {
   try {
     const response = await fetch(`server/getUserPhoto.jsp?user_id=${userId}`);
     if (!response.ok) throw new Error('No photo found');
+    // Try to fetch photo from server
+    const contentType = response.headers.get('content-type');
+    if (!contentType || !contentType.startsWith('image/')) {
+      throw new Error('Not an image');
+    }
 
     const blob = await response.blob();
     if (blob.size === 0) throw new Error('Empty photo');
@@ -161,6 +166,6 @@ async function fetchAndApplyUserPhoto(userId) {
     profileImage.src = imageUrl;
   } catch (err) {
     console.warn('Using fallback photo:', err.message);
-    profileImage.src = 'assets/profile-photo/luffy.png';
+    profileImage.src = 'assets/profile-photo/luffy.jpg';
   }
 }

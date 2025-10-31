@@ -13,9 +13,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Try to fetch photo from server
     const response = await fetch(`server/getUserPhoto.jsp?user_id=${userData.user_id}`);
-    if (!response.ok) throw new Error('No photo found');
+    const contentType = response.headers.get('content-type');
+    if (!contentType || !contentType.startsWith('image/')) {
+      throw new Error('Not an image');
+    }
 
     const blob = await response.blob();
+    console.log(blob);
     if (blob.size === 0) throw new Error('Empty photo');
 
     const imageUrl = URL.createObjectURL(blob);
