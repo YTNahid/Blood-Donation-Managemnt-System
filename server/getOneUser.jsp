@@ -8,7 +8,7 @@ String user_id = request.getParameter("user_id");
 
 try {
     PreparedStatement ps = conn.prepareStatement(
-        "SELECT user_id, username, profile_photo, email, phone, whatsapp, gender, blood_group, birth_date, district, role, availability " +
+        "SELECT user_id, username, email, phone, whatsapp, gender, blood_group, birth_date, district, role, availability " +
         "FROM users WHERE user_id = ?"
     );
     ps.setString(1, user_id);
@@ -18,7 +18,6 @@ try {
         json.put("success", true);
         json.put("user_id", rs.getInt("user_id"));
         json.put("username", rs.getString("username"));
-        json.put("profile_photo", rs.getString("profile_photo"));
         json.put("email", rs.getString("email"));
         json.put("phone", rs.getString("phone"));
         json.put("whatsapp", rs.getString("whatsapp"));

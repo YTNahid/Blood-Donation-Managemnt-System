@@ -6,7 +6,7 @@ JSONObject json = new JSONObject();
 
 try {
     PreparedStatement ps = conn.prepareStatement(
-        "SELECT user_id, username, profile_photo, email, phone, whatsapp, gender, blood_group, birth_date, district, role, availability FROM users"
+        "SELECT user_id, username, email, phone, whatsapp, gender, blood_group, birth_date, district, role, availability FROM users"
     );
     ResultSet rs = ps.executeQuery();
     
@@ -16,7 +16,6 @@ try {
         user.put("user_id", rs.getInt("user_id"));
         user.put("username", rs.getString("username"));
         user.put("email", rs.getString("email"));
-        user.put("profile_photo", rs.getString("profile_photo"));
         user.put("phone", rs.getString("phone"));
         user.put("whatsapp", rs.getString("whatsapp"));
         user.put("gender", rs.getString("gender"));

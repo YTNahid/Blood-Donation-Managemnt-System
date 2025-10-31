@@ -252,7 +252,7 @@ const checkStatus = async (requestId, btn) => {
 
       const statusContainer = btn.parentElement.querySelector('.status');
       if (statusContainer) {
-        statusContainer.textContent = status.toUpperCase();
+        statusContainer.textContent = status === 'approved' ? 'Complete' : status.toUpperCase();
         statusContainer.classList.add(status);
       }
 
