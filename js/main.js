@@ -46,18 +46,18 @@ const nearbyAlert = async () => {
     const params = new URLSearchParams({
       latitude: location.latitude,
       longitude: location.longitude,
-      nearby: 'true',
+      radius: 2,
     });
 
-    const response = await fetch(`server/getBloodRequestInfo.jsp?${params.toString()}`);
+    const response = await fetch(`server/getNearbyRequests.jsp?${params.toString()}`);
 
     const data = await response.json();
+    console.log(data);
 
     const nearbyTag = document.querySelector('.nearby-tag');
     if (!nearbyTag) return;
 
-    const distance = data.results[0].distance;
-    if (distance <= 2) {
+    if (data.results && data.results.length > 0) {
       const isNearbyClicked = JSON.parse(localStorage.getItem('isNearbyClicked'));
 
       if (!isNearbyClicked || Date.now() - isNearbyClicked.time > 1000 * 60 * 60) {

@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     const blob = await response.blob();
-    console.log(blob);
+
     if (blob.size === 0) throw new Error('Empty photo');
 
     const imageUrl = URL.createObjectURL(blob);
