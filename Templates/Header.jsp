@@ -14,7 +14,6 @@ String currPage = request.getServletPath();
 
 <aside id="sidebar" class="sidebar">
 	<div class="sidebar-header">
-		<a href="index.html"> &lt; </a>
 		Blood Donation
 	</div>
 	<nav class="nav-links">

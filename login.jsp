@@ -14,7 +14,6 @@
 <script src="js/handleLoginRegister.js"></script>
 </head>
 <body>
-	<a href="index.html" style="display: block; text-align: center; margin: 20px;"> &lt; Home</a>
 	<div class="auth-container">
 
 		<div class="auth-header">
