@@ -1,4 +1,4 @@
-import { getUserLocation } from './api.js';
+import { getUserLocation, getSessionInfo } from './api.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   // Mobile Menu
@@ -31,9 +31,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Alert nearby blood requests
   await nearbyAlert();
-  //setInterval(nearbyAlert, 0);
+
+  // Pending history notify
+  await checkPendingHistory();
 });
 
+// Nearby alert function
 const nearbyAlert = async () => {
   // Skip on login or requestBlood pages
   const path = window.location.pathname;
@@ -52,7 +55,6 @@ const nearbyAlert = async () => {
     const response = await fetch(`server/getNearbyRequests.jsp?${params.toString()}`);
 
     const data = await response.json();
-    console.log(data);
 
     const nearbyTag = document.querySelector('.nearby-tag');
     if (!nearbyTag) return;
@@ -75,5 +77,29 @@ const nearbyAlert = async () => {
     }
   } catch (err) {
     console.error('Error in nearbyAlert:', err);
+  }
+};
+
+// Notify if there is any pending history
+const checkPendingHistory = async () => {
+  try {
+    const session = await getSessionInfo();
+
+    if (session.role === 'admin') {
+      let notify = document.querySelector('.pending-notify');
+
+      const response = await fetch('server/getPendingHistoryNotify.jsp');
+      const data = await response.json();
+
+      console.log(data);
+
+      if (data.result.pending) {
+        notify.classList.add('active');
+      } else {
+        notify.classList.remove('active');
+      }
+    }
+  } catch (err) {
+    console.error('Error getting session: ', err);
   }
 };

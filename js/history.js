@@ -9,8 +9,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const res = await fetch(`server/getHistories.jsp`);
     const data = await res.json();
 
-    console.log(data.results);
-
     renderHistory(data.results, session.role);
   }
 

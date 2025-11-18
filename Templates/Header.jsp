@@ -33,7 +33,7 @@ String currPage = request.getServletPath();
 			<img src="assets/droplet-solid-full.svg" class="icon"> Blood Requests <sup class="nearby-tag">(Nearby)</sup>
 		</a>
 		<a href="history.jsp" class="text<%=currPage.endsWith("history.jsp") ? " active" : ""%>">
-			<img src="assets/clock-solid-full.svg" class="icon"> History
+			<img src="assets/clock-solid-full.svg" class="icon"> History<span class="pending-notify"></span>
 		</a>
 		<a href="contact.jsp" class="text<%=currPage.endsWith("contact.jsp") ? " active" : ""%>">
 			<img src="assets/comment-solid-full.svg" class="icon"> Feedback / Contact
