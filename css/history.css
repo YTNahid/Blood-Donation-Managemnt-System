@@ -4,6 +4,12 @@
   gap: 20px;
 }
 
+#history-list .pending-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .approved-section .title {
   grid-column: span 2;
 }

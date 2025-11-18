@@ -31,11 +31,11 @@
 					<div id="contact-form">
 						<form id="contactForm" class="form">
 							<div class="form-group full">
-								<label for="name" class="label">Name<span class="required-star">*</span></label> <input type="text" id="name" class="input" name="name" readonly />
+								<label for="name" class="label">Name<span class="required-star">*</span></label> <input type="text" id="name" class="input" name="name" placeholder="Your Name" required />
 							</div>
 
 							<div class="form-group full">
-								<label for="email" class="label">Email<span class="required-star">*</span></label> <input type="email" id="email" class="input" name="email" readonly />
+								<label for="email" class="label">Email<span class="required-star">*</span></label> <input type="email" id="email" class="input" name="email" placeholder="Your Email" required/>
 							</div>
 
 							<div class="form-group full">

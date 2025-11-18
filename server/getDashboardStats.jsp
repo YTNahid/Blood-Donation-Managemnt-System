@@ -23,7 +23,7 @@ try {
     donationStmt.close();
 
     // Total requests
-    String requestSql = "SELECT COUNT(*) FROM blood_requests";
+    String requestSql = "SELECT COUNT(*) FROM blood_requests BR left join donation_history DH on BR.request_id = DH.request_id WHERE DH.request_id IS NULL";
     PreparedStatement requestStmt = conn.prepareStatement(requestSql);
     ResultSet requestRs = requestStmt.executeQuery();
     if (requestRs.next()) json.put("totalRequests", requestRs.getInt(1));
