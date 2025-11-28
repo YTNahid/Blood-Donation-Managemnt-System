@@ -33,7 +33,6 @@ try {
         return;
     }
 
-    // Build SQL with JOIN to donation_history
     StringBuilder sql = new StringBuilder(
         "SELECT br.request_id, br.requester_id, u.username, br.blood_group, br.location, br.contact_info, " +
         "br.reason, br.district, br.latitude, br.longitude, br.request_date, br.due_date, br.urgent, " +
@@ -65,7 +64,7 @@ try {
         params.add(searchRequestId);
     }
 
-    // Order: no donation history first, then pending, approved, rejected
+    // Donation status order
     sql.append("ORDER BY CASE " +
                "WHEN dh.status IS NULL THEN 0 " +
                "WHEN dh.status = 'pending' THEN 1 " +
@@ -81,13 +80,14 @@ try {
 
     List<JSONObject> results = new ArrayList<>();
 
-    double R = 6371.0; // Earth radius in km
+    double R = 6371.0; // Earth radius 
     while (rs.next()) {
         Double reqLat = rs.getObject("latitude") != null ? rs.getDouble("latitude") : null;
         Double reqLon = rs.getObject("longitude") != null ? rs.getDouble("longitude") : null;
 
         Double distance = null;
         if (reqLat != null && reqLon != null && userLat != null && userLon != null) {
+            // The Haversine Formula
             double dLat = Math.toRadians(reqLat - userLat);
             double dLon = Math.toRadians(reqLon - userLon);
             double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
@@ -114,7 +114,7 @@ try {
         row.put("due_date", rs.getTimestamp("due_date"));
         row.put("urgent", rs.getInt("urgent"));
         row.put("distance", distance);
-        row.put("status", rs.getString("status")); // from donation_history
+        row.put("status", rs.getString("status"));
         results.add(row);
     }
 
@@ -122,12 +122,34 @@ try {
     ps.close();
 
     if ("true".equals(nearby)) {
-        results.sort((a, b) -> {
+
+        // Array to store requests that are not in history
+        List<JSONObject> unsortedNew = new ArrayList<>();
+
+        // Array to store requests that are in history
+        List<JSONObject> existing = new ArrayList<>();
+
+        for (JSONObject obj : results) {
+            if (obj.opt("status") == null || obj.opt("status").equals(JSONObject.NULL)) {
+                unsortedNew.add(obj);
+            } else {
+                existing.add(obj);  
+            }
+        }
+
+        // Sort new ones
+        unsortedNew.sort((a, b) -> {
             Double d1 = a.optDouble("distance", Double.MAX_VALUE);
             Double d2 = b.optDouble("distance", Double.MAX_VALUE);
             return Double.compare(d1, d2);
         });
+
+        // Merge 
+        results.clear();
+        results.addAll(unsortedNew);
+        results.addAll(existing);
     }
+
 
     json.put("results", results);
     json.put("success", true);
