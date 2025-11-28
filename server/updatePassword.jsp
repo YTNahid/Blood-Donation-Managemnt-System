@@ -41,5 +41,7 @@ if (user_id != null && newPassword != null) {
     json.put("success", false);
     json.put("error", "Missing user_id or password parameter");
 }
+
+conn.close();
 out.print(json.toString());
 %>

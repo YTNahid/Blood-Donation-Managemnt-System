@@ -42,6 +42,12 @@ try {
     response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
     json.put("success", false);
     json.put("error", e.getMessage());
+} finally {
+    try {
+        conn.close();
+    } catch (Exception e) {
+        json.put("error", e.getMessage());
+    }
 }
 
 out.print(json.toString());

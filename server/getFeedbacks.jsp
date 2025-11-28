@@ -32,5 +32,11 @@ try {
     error.put("success", false);
     error.put("error", e.getMessage());
     out.print(error.toString());
+} finally {
+    try {
+        conn.close();
+    } catch (Exception e) {
+        json.put("error", e.getMessage());
+    }
 }
 %>

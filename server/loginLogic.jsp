@@ -51,6 +51,12 @@ if (email != null && password != null) {
             ps.close();
         } catch (Exception e) {
             error = "Database error: " + e.getMessage();
+        } finally {
+            try {
+                conn.close();
+            } catch (Exception e) {
+                error = "Error closing connection: " + e.getMessage();
+            }
         }
     }
 }

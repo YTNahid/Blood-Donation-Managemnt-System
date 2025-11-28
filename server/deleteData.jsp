@@ -28,6 +28,12 @@ if (id != null && table != null && column != null) {
         }
     } catch (Exception e) {
         error = "Error deleting record: " + e.getMessage();
+    } finally {
+        try {
+            conn.close();
+        } catch (Exception e) {
+            error = "Error closing connection: " + e.getMessage();
+        }
     }
 } else {
     error = "Invalid parameters.";

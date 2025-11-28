@@ -93,5 +93,7 @@ if (error == null) {
     json.put("error", error);
 }
 
+conn.close();
+
 out.print(json.toString());
 %>

@@ -63,5 +63,6 @@ try {
     json.put("error", e.getMessage());
 }
 
+conn.close();
 out.print(json.toString());
 %>

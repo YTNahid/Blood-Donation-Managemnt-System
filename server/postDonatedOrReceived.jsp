@@ -53,6 +53,12 @@ try {
     json.put("success", false);
     json.put("error", e.getMessage());
     json.put("message", "Error occurred while submitting");
+} finally {
+    try {
+        conn.close();
+    } catch (Exception e) {
+        json.put("error", e.getMessage());
+    }
 }
 
 out.print(json.toString());

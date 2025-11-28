@@ -50,5 +50,6 @@ if (userIdStr != null) {
 	json.put("error", "Missing user_id");
 }
 
+conn.close();
 out.print(json.toString());
 %>

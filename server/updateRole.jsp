@@ -25,5 +25,7 @@ if (userIdParam != null && newRole != null && ("admin".equals(newRole) || "user"
 } else {
     message = "Invalid parameters.";
 }
+
+conn.close();
 response.sendRedirect("../manageUsers.jsp?msg=" + java.net.URLEncoder.encode(message, "UTF-8"));
 %>
