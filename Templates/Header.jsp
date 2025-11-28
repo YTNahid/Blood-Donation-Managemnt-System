@@ -41,9 +41,11 @@ String currPage = request.getServletPath();
 		<a href="history.jsp" class="text<%=currPage.endsWith("history.jsp") ? " active" : ""%>">
 			<img src="assets/clock-solid-full.svg" class="icon"> History<span class="pending-notify"></span>
 		</a>
+		<% if (!"admin".equals(role)) { %>
 		<a href="contact.jsp" class="text<%=currPage.endsWith("contact.jsp") ? " active" : ""%>">
 			<img src="assets/comment-solid-full.svg" class="icon"> Feedback / Contact
 		</a>
+		<% } %>
 
 		<%
 		if ("admin".equals(role)) {
