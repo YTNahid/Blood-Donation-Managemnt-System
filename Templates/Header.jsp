@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
+String username = (String) session.getAttribute("username");
+String role = (String) session.getAttribute("role");
 String currPage = request.getServletPath();
 %>
 <div class="section header-mobile">
@@ -20,9 +22,13 @@ String currPage = request.getServletPath();
 		<a href="dashboard.jsp" class="text<%=currPage.endsWith("dashboard.jsp") ? " active" : ""%>">
 			<img src="assets/house-solid-full.svg" class="icon"> Dashboard
 		</a>
+		<%
+		if (username != null) {
+		%>
 		<a href="profile.jsp" class="text<%=currPage.endsWith("profile.jsp") ? " active" : ""%>">
 			<img src="assets/user-solid-full.svg" class="icon"> Profile
 		</a>
+		<% } %>
 		<a href="announcements.jsp" class="text<%=currPage.endsWith("announcements.jsp") ? " active" : ""%>">
 			<img src="assets/bullhorn-solid-full.svg" class="icon"> Announcements
 		</a>
@@ -40,7 +46,6 @@ String currPage = request.getServletPath();
 		</a>
 
 		<%
-		String role = (String) session.getAttribute("role");
 		if ("admin".equals(role)) {
 		%>
 		<h6 class="heading admin-heading">ADMIN PANEL</h6>
@@ -57,18 +62,24 @@ String currPage = request.getServletPath();
 		}
 		%>
 	</nav>
+	<%
+	if (username != null) {
+	%>
 	<div class="sidebar-profile">
 		<img src="assets/profile-photo/luffy.jpg" alt="Profile Picture" class="profile-photo" />
 		<p class="text">
 			<%
-			String username = (String) session.getAttribute("username");
 			String firstName = username.split("\\s+")[0];
 			out.print(firstName + "<br> <span class=\"user-role\">(" + role + ")</span>");
 			%>
 		</p>
-
 		<a href="server/logout.jsp" title="Logout" class="logout-btn">
 			<i class="fa-solid fa-right-from-bracket" style="cursor: pointer;"></i>
 		</a>
 	</div>
+	<% } else { %>
+	<div class="sidebar-profile">
+		<a href="login.jsp" class="button" style="width: 100%; text-align: center;">Login / Register</a>
+	</div>
+	<% } %>
 </aside>

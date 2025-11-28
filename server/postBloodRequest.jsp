@@ -13,10 +13,7 @@ String reason = request.getParameter("reason");
 String urgentStr = request.getParameter("urgent"); // null if unchecked, 'on' if checked
 String dueDateStr = request.getParameter("due_date"); // yyyy-MM-dd
 
-System.out.println(urgentStr);
-
 int requesterId = (int) session.getAttribute("userId");
-
 
 try {
 	PreparedStatement ps = conn.prepareStatement(

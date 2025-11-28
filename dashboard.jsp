@@ -1,5 +1,4 @@
 <%@ page import="java.sql.*, java.util.*" language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="server/authCheck.jsp"%>
 <%@ include file="server/DBConnection.jsp"%>
 <!DOCTYPE html>
 <html>
@@ -44,7 +43,7 @@
 				</div>
 				<div class="column card">
 					<div class="card-number" id="total-requests">0</div>
-					<h4 class="heading card-title">Blood Requests</h4>
+					<h4 class="heading card-title">Incomplete Blood Requests</h4>
 					<a href="requestBlood.jsp" class="card-link link">
 						View Requests <span>></span>
 					</a>

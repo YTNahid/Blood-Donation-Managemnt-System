@@ -150,10 +150,11 @@ function renderRequests(requests) {
 	                    <a href="https://www.google.com/maps/search/?api=1&query=${r.latitude},${r.longitude}" target="_blank">
 	                        <button class="button button-small">View Location</button>
 	                    </a>
-	                    ${typeof r.distance === 'number' ? ` (${r.distance.toFixed(2)} Km)` : ''}
+	                    ${typeof r.distance === 'number' ? ` (${r.distance.toFixed(2)} Km away)` : ''}
 	                </div>`
                   : ''
               }
+              <div class="note">*Click the button bellow if you have donated or received blood*</div>
               <div class="row exclude action">
                   <button class="button button-small actionBtn ${r.current_user_id === r.requester_id ? 'received' : 'donated'}" data-request-id=${
         r.request_id
@@ -185,26 +186,31 @@ function renderRequests(requests) {
       checkStatus(btn.dataset.requestId, btn);
 
       btn.addEventListener('click', async () => {
-        const actionText = btn.textContent.toLowerCase();
-
         const session = await getSessionInfo();
 
+        // If user is not logged in, redirect to login page
+        if (!session.user_id) {
+          window.location.href = 'login.jsp';
+          return;
+        }
+
+        // If logged in, proceed with the action
+        const actionText = btn.textContent.toLowerCase().trim();
         const params = new URLSearchParams();
         params.append('requestId', btn.dataset.requestId);
         params.append('action', actionText);
         params.append('donor_id', session.user_id);
 
         let response = await fetch(`server/postDonatedOrReceived.jsp?${params.toString()}`);
-
         let result = await response.json();
+
         if (result.success) {
           alert(result.message);
+          checkStatus(btn.dataset.requestId, btn);
         } else {
           alert(result.message || 'Failed to submit action.');
           console.error('Error response:', result.error);
         }
-
-        checkStatus(btn.dataset.requestId, btn);
       });
     });
   }
