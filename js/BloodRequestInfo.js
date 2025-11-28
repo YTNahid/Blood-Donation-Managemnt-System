@@ -154,14 +154,16 @@ function renderRequests(requests) {
 	                </div>`
                   : ''
               }
-              <div class="note">*Click the button bellow if you have donated or received blood*</div>
-              <div class="row exclude action">
-                  <button class="button button-small actionBtn ${r.current_user_id === r.requester_id ? 'received' : 'donated'}" data-request-id=${
+	        </div>
+          <div class="bottom">
+            <div class="note">*Click the button bellow if you have donated or received blood*</div>
+            <div class="row exclude action">
+                <button class="button button-small actionBtn ${r.current_user_id === r.requester_id ? 'received' : 'donated'}" data-request-id=${
         r.request_id
       }>${r.current_user_id === r.requester_id ? 'Received' : 'Donated'}</button>
-                  <span class="status">${r.status ? r.status : ''}</span>
-              </div>
-	        </div>
+                <span class="status">${r.status ? r.status : ''}</span>
+            </div>
+          </div>
 	    </div>
 	`
     )
