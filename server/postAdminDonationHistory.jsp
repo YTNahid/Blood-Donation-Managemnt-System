@@ -43,13 +43,9 @@ try {
     json.put("success", false);
     json.put("error", e.getMessage());
     json.put("message", "Error occurred while adding record");
-} finally {
-    try {
-        conn.close();
-    } catch (Exception e) {
-        json.put("error", e.getMessage());
-    }
-}
+} 
+
+conn.close();
 
 out.print(json.toString());
 %>

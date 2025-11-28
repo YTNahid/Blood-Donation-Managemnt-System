@@ -51,12 +51,6 @@ if (email != null && password != null) {
             ps.close();
         } catch (Exception e) {
             error = "Database error: " + e.getMessage();
-        } finally {
-            try {
-                conn.close();
-            } catch (Exception e) {
-                error = "Error closing connection: " + e.getMessage();
-            }
         }
     }
 }
@@ -67,5 +61,9 @@ if (loginSuccess) {
     json.put("success", false);
     json.put("error", error);
 }
+
+conn.close();
+
+
 out.print(json.toString());
 %>

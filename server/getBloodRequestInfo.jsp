@@ -136,11 +136,7 @@ try {
     json.put("error", "Database error: " + e.getMessage());
     json.put("success", false);
     out.print(json.toString());
-} finally {
-    try {
-        conn.close();
-    } catch (Exception e) {
-        json.put("error", "Error closing connection: " + e.getMessage());
-    }
-}
+} 
+
+conn.close();
 %>

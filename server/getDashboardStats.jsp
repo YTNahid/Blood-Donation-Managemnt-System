@@ -32,13 +32,9 @@ try {
 
 } catch (Exception e) {
     json.put("error", e.getMessage());
-} finally {
-    try {
-        conn.close();
-    } catch (Exception e) {
-        json.put("error", e.getMessage());
-    }
-}
+} 
+
+conn.close();
 
 out.print(json.toString());
 %>

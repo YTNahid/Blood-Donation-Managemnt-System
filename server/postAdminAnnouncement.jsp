@@ -37,12 +37,8 @@ try {
     json.put("success", false);
     json.put("error", e.getMessage());
     json.put("message", "Failed to post announcement");
-} finally {
-    try {
-        conn.close();
-    } catch (Exception e) {
-        json.put("error", e.getMessage());
-    }
-}
+} 
+
+conn.close();
 out.print(json.toString());
 %>

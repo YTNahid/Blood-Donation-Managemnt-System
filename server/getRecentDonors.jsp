@@ -30,13 +30,9 @@ try {
     JSONObject errorObj = new JSONObject();
     errorObj.put("error", e.getMessage());
     donorsArray.put(errorObj);
-} finally {
-    try {
-        conn.close();
-    } catch (Exception e) {
-        
-    }
-}
+} 
+
+conn.close();
 
 out.print(donorsArray.toString());
 %>

@@ -44,16 +44,14 @@ if (user_id != null) {
     } catch (Exception e) {
         json.put("success", false);
         json.put("error", e.getMessage());
-    } finally {
-        try {
-            conn.close();
-        } catch (Exception e) {
-            json.put("error", e.getMessage());
-        }
-    }
+    } 
 } else {
     json.put("success", false);
     json.put("error", "Missing user_id or password parameter");
 }
+
+conn.close();
+
+
 out.print(json.toString());
 %>
