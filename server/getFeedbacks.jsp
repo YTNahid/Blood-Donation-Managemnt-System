@@ -5,7 +5,7 @@ response.setContentType("application/json");
 JSONObject json = new JSONObject();
 
 try {
-    String sql = "SELECT f.message_id, f.message, f.subject, f.submitted_at, u.username, u.email FROM contact_form f JOIN users u ON f.contacted_by = u.user_id ORDER BY f.submitted_at DESC";
+    String sql = "SELECT message_id, contacted_by, message, subject, submitted_at, name, email FROM contact_form ORDER BY submitted_at DESC";
     PreparedStatement ps = conn.prepareStatement(sql);
     ResultSet rs = ps.executeQuery();
     
@@ -14,10 +14,11 @@ try {
     while (rs.next()) {
         JSONObject feedback = new JSONObject();
         feedback.put("message_id", rs.getInt("message_id"));
+        feedback.put("contacted_by", rs.getInt("contacted_by"));
         feedback.put("message", rs.getString("message"));
         feedback.put("subject", rs.getString("subject"));
         feedback.put("submitted_at", rs.getTimestamp("submitted_at"));
-        feedback.put("username", rs.getString("username"));
+        feedback.put("name", rs.getString("name"));
         feedback.put("email", rs.getString("email"));
         results.add(feedback);
     }
@@ -34,5 +35,5 @@ try {
     out.print(error.toString());
 } 
 
-conn.close();
+try { conn.close(); } catch (Exception ignore) {}
 %>
