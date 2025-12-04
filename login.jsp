@@ -14,6 +14,7 @@
 <script src="js/handleLoginRegister.js"></script>
 </head>
 <body>
+	<div style="text-align: center; margin: 20px 0 -20px 0"><a href="/blood_donation/dashboard.jsp">&lt; Go to dashboard</a></div>
 	<div class="auth-container">
 
 		<div class="auth-header">
